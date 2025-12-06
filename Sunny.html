@@ -1,18 +1,163 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>My GitHub Page</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StudyNate — Futuristic Mods Page</title>
   <style>
-    body{font-family:Arial, sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0;}
-    .card{padding:24px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,0.1); text-align:center;}
+    :root{
+      --bg:#03040a;
+      --accent1:#7cf7ff;
+      --accent2:#b27cff;
+      --glass:rgba(255,255,255,0.08);
+      --glass2:rgba(255,255,255,0.12);
+      font-family: Inter, sans-serif;
+    }
+
+    body{
+      margin:0;
+      background: radial-gradient(circle at 20% 20%, rgba(124,247,255,0.15), transparent 60%),
+                  radial-gradient(circle at 80% 80%, rgba(178,124,255,0.12), transparent 60%),
+                  var(--bg);
+      color:white;
+      overflow-x:hidden;
+      animation:bgshift 14s infinite alternate ease-in-out;
+    }
+
+    @keyframes bgshift{
+      0%{background-position:0 0, 0 0;} 100%{background-position:20px 40px, -30px -20px;}
+    }
+
+    .wrap{max-width:1000px;margin:40px auto;padding:20px}
+
+    h1{text-align:center;font-size:32px;margin-bottom:25px;
+       background:linear-gradient(90deg,var(--accent1),var(--accent2));
+       -webkit-background-clip:text;color:transparent;
+       animation:glow 2s infinite alternate ease-in-out;}
+
+    @keyframes glow{
+      from{text-shadow:0 0 8px rgba(124,247,255,0.4);} to{text-shadow:0 0 16px rgba(178,124,255,0.6);} }
+
+    .section{
+      margin-top:30px;
+      background:var(--glass);
+      padding:22px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.12);
+      backdrop-filter:blur(12px);
+      transition:0.25s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .section:hover{
+      transform:translateY(-6px);
+      box-shadow:0 0 22px rgba(124,247,255,0.25);
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;top:-40%;left:-40%;width:180%;height:180%;
+      background:conic-gradient(from 0deg, transparent, rgba(124,247,255,0.1), transparent 30%);
+      animation:rotate 9s linear infinite;
+    }
+
+    @keyframes rotate{
+      100%{transform:rotate(360deg);} }
+
+    .section h2{margin:0 0 14px 0;font-size:22px;color:#d7eaff}
+
+    .link-box{display:flex;flex-direction:column;gap:12px}
+
+    .item{
+      background:var(--glass2);
+      padding:14px;border-radius:12px;
+      display:flex;justify-content:space-between;align-items:center;
+      border:1px solid rgba(255,255,255,0.2);
+      transition:0.22s;
+    }
+
+    .item:hover{
+      transform:scale(1.03);
+      box-shadow:0 0 16px rgba(124,247,255,0.35);
+    }
+
+    .item span{font-size:16px;font-weight:600}
+
+    .item a{
+      text-decoration:none;color:black;font-weight:700;
+      padding:8px 14px;border-radius:10px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      box-shadow:0 0 10px rgba(124,247,255,0.5);
+      transition:0.2s;
+    }
+
+    .item a:hover{transform:translateY(-3px);}
+
+    /* ICONS */
+    .icon{width:28px;height:28px;display:inline-block;background-size:cover}
+    .tg{background-image:url('https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg')}
+    .wa{background-image:url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg')}
+
+    .social-box{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+
+    .social-item{
+      padding:14px;border-radius:12px;
+      background:var(--glass2);
+      border:1px solid rgba(255,255,255,0.18);
+      display:flex;align-items:center;gap:10px;
+      transition:0.22s;
+    }
+
+    .social-item:hover{
+      transform:scale(1.03);
+      box-shadow:0 0 18px rgba(178,124,255,0.35);
+    }
+
+    .social-item a{text-decoration:none;color:white;font-weight:700;font-size:16px}
+
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Hello, main GitHub Pages site hoon 👋</h1>
-    <p>Yeh simple static page GitHub Pages se host hua hai.</p>
+  <div class="wrap">
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:25px;">
+  <img src="https://i.postimg.cc/x1M0YN5Z/sunny.jpg" style="width:70px;height:70px;border-radius:50%;box-shadow:0 0 20px rgba(124,247,255,0.5);">
+  <h1 style="margin:0;">Welcome to StudyNate</h1>
+</div>
+
+    <!-- KGS MOD SECTION -->
+    <div class="section">
+      <h2>KGS MOD — Active Websites</h2>
+      <div class="link-box">
+        <a class="item" href="https://kgs-web.onrender.com" target="_blank" style="text-decoration:none;color:white;">
+          <span>Website 1</span>
+        </a>
+        <a class="item" href="https://kgs-sunny.up.railway.app" target="_blank" style="text-decoration:none;color:white;">
+          <span>Website 2</span>
+        </a>
+        <a class="item" href="https://kgs-web-vercal.vercel.app" target="_blank" style="text-decoration:none;color:white;">
+          <span>Website 3</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2500+ MOD SECTION -->
+    <div class="section">
+      <h2>2500+ MOD</h2>
+      <a class="item" href="http://t.me/studymate_sunny_bot/Appx" target="_blank" style="text-decoration:none;color:white;">
+        <span>2500+ MOD Collection</span>
+      </a>
+    </div>
+
+    <!-- BACKUP CHANNELS SECTION -->
+    <div class="section">
+      <h2>Backup Channels</h2>
+      <div class="social-box">
+        <div class="social-item"><span class="icon tg"></span><a href="https://t.me/+S535N4ksOx00N2Jl" target="_blank">Telegram Backup</a></div>
+        <div class="social-item"><span class="icon wa"></span><a href="https://whatsapp.com/channel/0029VbByMEkIyPtP7HiYX83L" target="_blank">WhatsApp Backup</a></div>
+      </div>
+    </div>
+
   </div>
 </body>
 </html>

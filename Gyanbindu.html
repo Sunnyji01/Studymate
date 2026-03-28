@@ -1,84 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>AI Tech Blog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body {
-  font-family: Arial;
-  margin: 0;
-  background: #f4f4f4;
-}
-header {
-  background: #111;
-  color: #fff;
-  padding: 15px;
-  text-align: center;
-}
-.container {
-  max-width: 900px;
-  margin: auto;
-  background: #fff;
-  padding: 20px;
-}
-.ad {
-  text-align: center;
-  margin: 20px 0;
-}
-</style>
-</head>
-
-<body>
-
-<header>AI Tech Blog</header>
-
-<div class="container">
-
-<h1>Future of AI</h1>
-<p>Scroll karo aur ads infinite aayenge 👇</p>
-
-<div id="ad-container"></div>
-
-</div>
-
 <script>
 let adContainer = document.getElementById("ad-container");
 
-// ek function jo ads banata hai
-function loadAds(count = 10) {
+function loadAds(count = 5) {
   for (let i = 0; i < count; i++) {
 
     let adDiv = document.createElement("div");
     adDiv.className = "ad";
 
-    adDiv.innerHTML = `
-      <script>
-        atOptions = {
-          'key' : '48da2db9ac7f3fa1b00178c53c7fef12',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300
-        };
-      <\/script>
-      <script src="https://leapedunarmed.com/48da2db9ac7f3fa1b00178c53c7fef12/invoke.js"><\/script>
+    // script 1 (atOptions)
+    let script1 = document.createElement("script");
+    script1.innerHTML = `
+      atOptions = {
+        'key' : '48da2db9ac7f3fa1b00178c53c7fef12',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300
+      };
     `;
+
+    // script 2 (invoke)
+    let script2 = document.createElement("script");
+    script2.src = "https://leapedunarmed.com/48da2db9ac7f3fa1b00178c53c7fef12/invoke.js";
+
+    adDiv.appendChild(script1);
+    adDiv.appendChild(script2);
 
     adContainer.appendChild(adDiv);
   }
 }
 
-// initial load
-loadAds(10);
+// first load
+loadAds(5);
 
-// scroll pe auto load
+// scroll load
 window.addEventListener("scroll", () => {
   if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
-    loadAds(10); // har scroll pe 10 aur
+    loadAds(5);
   }
 });
 </script>
-
-</body>
-</html>

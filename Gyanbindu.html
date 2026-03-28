@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AI Technology Blog</title>
+  <title>AI Tech Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -35,12 +35,36 @@
       text-align: center;
       margin: 20px 0;
     }
+    .counter {
+      text-align: center;
+      padding: 10px;
+      font-size: 18px;
+      background: #eee;
+    }
   </style>
 </head>
 
 <body>
 
 <header>AI Tech Blog</header>
+
+<!-- Visitor Counter -->
+<div class="counter">
+  👁️ Visitors: <span id="counter">0</span>
+</div>
+
+<script>
+  let count = localStorage.getItem("visitCount");
+
+  if (!count) {
+    count = 1;
+  } else {
+    count = parseInt(count) + 1;
+  }
+
+  localStorage.setItem("visitCount", count);
+  document.getElementById("counter").innerText = count;
+</script>
 
 <div class="container">
 
@@ -83,19 +107,18 @@ to improve customer experience and reduce costs.
 </div>
 
 <p>
-Machine learning and deep learning are the core parts of AI technology. These systems learn from data
-and improve over time.
+Machine learning and deep learning are the core parts of AI technology.
 </p>
 
-<!-- Ad 3 Direct Link -->
+<!-- Ad 3 -->
 <div class="ad">
 <a href="https://leapedunarmed.com/ptazaint?key=b642ebb480ee45f973b276f97879967b" target="_blank">
-Click Here for Special Offer
+Click Here for Offer
 </a>
 </div>
 
 <p>
-AI is also widely used in healthcare, helping doctors diagnose diseases faster and more accurately.
+AI is also widely used in healthcare and education systems.
 </p>
 
 <!-- Ad 4 -->
@@ -103,19 +126,11 @@ AI is also widely used in healthcare, helping doctors diagnose diseases faster a
 <script src="https://leapedunarmed.com/1c/4e/ab/1c4eabfe0c695dab0b062ed6156b8986.js"></script>
 </div>
 
-<p>
-In education, AI is helping students learn better with personalized learning systems.
-</p>
-
 <!-- Ad 5 -->
 <div class="ad">
 <script async="async" data-cfasync="false" src="https://leapedunarmed.com/45305aa006b07dc7c9f45b32ab350aab/invoke.js"></script>
 <div id="container-45305aa006b07dc7c9f45b32ab350aab"></div>
 </div>
-
-<p>
-The future of AI looks promising, but ethical concerns like data privacy and job loss must be addressed.
-</p>
 
 <!-- Ad 6 -->
 <div class="ad">
@@ -175,7 +190,7 @@ The future of AI looks promising, but ethical concerns like data privacy and job
 </div>
 
 <p>
-In conclusion, AI is shaping the future, and its impact will continue to grow in every industry.
+In conclusion, AI is shaping the future and will continue to grow.
 </p>
 
 </div>

@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html lang="hi" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunny | Elite Web Architect & Cyber Specialist</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+          },
+          colors: {
+            neon: {
+              green: '#10b981',
+              cyan: '#06b6d4',
+              purple: '#8b5cf6',
+              dark: '#050811'
+            }
+          },
+          animation: {
+            'glow-pulse': 'glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 4s ease-in-out infinite',
+          },
+          keyframes: {
+            glow: {
+              '0%, 100%': { opacity: 0.8, transform: 'scale(1)' },
+              '50%': { opacity: 0.4, transform: 'scale(1.05)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar and scanline vibe */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050811;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f2937;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #06b6d4;
+    }
+    .grid-bg {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-[#050811] text-slate-200 font-mono antialiased relative selection:bg-cyan-500 selection:text-black min-h-screen overflow-x-hidden">
+
+  <!-- Background Canvas for Matrix / Tech Particles -->
+  <canvas id="matrixCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none opacity-20 z-0"></canvas>
+
+  <!-- Content Layer -->
+  <div class="relative z-10 grid-bg min-h-screen flex flex-col justify-between">
+    
+    <!-- Top Navigation / Status Header -->
+    <header class="border-b border-slate-800/80 backdrop-blur-md bg-[#050811]/80 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="relative flex items-center justify-center w-9 h-9 rounded-lg bg-cyan-950 border border-cyan-500/40 text-cyan-400 font-black text-lg">
+            S
+            <span class="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+          </div>
+          <div>
+            <span class="font-extrabold text-lg tracking-wider text-white">SUNNY<span class="text-cyan-400">.SYS</span></span>
+            <p class="text-[10px] text-emerald-400 tracking-widest uppercase">ROOT ACCESS // ONLINE</p>
+          </div>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-widest text-slate-400">
+          <a href="#about" class="hover:text-cyan-400 transition-colors">Speciality</a>
+          <a href="#terminal" class="hover:text-cyan-400 transition-colors">Terminal</a>
+          <a href="#arsenal" class="hover:text-cyan-400 transition-colors">Tech Arsenal</a>
+          <a href="#projects" class="hover:text-cyan-400 transition-colors">Missions</a>
+        </nav>
+
+        <div>
+          <a href="#contact" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black shadow-lg shadow-cyan-500/20 active:scale-95 transition-all inline-block">
+            Hire Sunny
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="flex-grow">
+      
+      <!-- Hero Banner With Sunny's Avatar Image -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20 text-center relative">
+        
+        <!-- Cyber Avatar Frame (Image Section) -->
+        <div class="relative inline-block mx-auto mb-8 animate-float">
+          <!-- Animated Neon Glow Behind -->
+          <div class="absolute -inset-1.5 bg-gradient-to-r from-cyan-500 via-indigo-500 to-emerald-500 rounded-3xl blur-md opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+          
+          <!-- Cyber Border Container -->
+          <div class="relative p-1.5 bg-slate-950 rounded-3xl border border-cyan-500/50 shadow-2xl shadow-cyan-500/20">
+            <div class="relative w-36 h-36 sm:w-48 sm:h-48 rounded-2xl overflow-hidden bg-slate-900 border border-slate-800">
+              <!-- Aapki Di Hui Image -->
+              <img 
+                id="sunnyAvatar"
+                src="https://i.ibb.co/5gVpgxBy/image.jpg" 
+                alt="Sunny The Elite Hacker Developer" 
+                class="w-full h-full object-cover object-center filter saturate-110 contrast-105 hover:scale-105 transition-transform duration-500"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534972195531-a756b1126f24?w=500&auto=format&fit=crop&q=80';"
+              />
+
+              <!-- Cyber Scanline Overlay inside Image -->
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none"></div>
+              
+              <!-- Bottom Status Label on Image -->
+              <div class="absolute bottom-2 left-2 right-2 text-center bg-cyan-950/85 border border-cyan-500/40 rounded py-0.5 text-[9px] text-cyan-300 font-bold uppercase tracking-widest backdrop-blur-xs">
+                ARCHITECT // SUNNY
+              </div>
+            </div>
+
+            <!-- Corner Cyber Decals -->
+            <span class="absolute -top-1 -left-1 w-2.5 h-2.5 border-t-2 border-l-2 border-cyan-400"></span>
+            <span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 border-b-2 border-r-2 border-cyan-400"></span>
+          </div>
+
+          <!-- Live Online Pill Badge -->
+          <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-slate-900 border border-emerald-500/60 rounded-full px-3 py-0.5 flex items-center gap-1.5 shadow-md">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="text-[10px] text-emerald-400 font-bold tracking-wider uppercase">Active</span>
+          </div>
+        </div>
+
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-400 text-xs font-medium mb-6">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          Level 99 Web Architect & Security Researcher
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white max-w-4xl mx-auto leading-none">
+          CODING KA BAAZIGAR, <br />
+          <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-500 bg-clip-text text-transparent">
+            SUNNY THE ARCHITECT
+          </span>
+        </h1>
+
+        <p class="mt-6 text-sm sm:text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          Pura system hilane wala developer! Fast performance, unbreakable architecture, aur lethal modern UI/UX design. Server se lekar client tak — sab apne control mein.
+        </p>
+
+        <!-- Dynamic Stat Badges -->
+        <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 backdrop-blur-sm">
+            <div class="text-2xl sm:text-3xl font-black text-cyan-400">99.9%</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Optimization Rate</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 backdrop-blur-sm">
+            <div class="text-2xl sm:text-3xl font-black text-emerald-400">0 ms</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Downtime Fear</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 backdrop-blur-sm">
+            <div class="text-2xl sm:text-3xl font-black text-indigo-400">100+</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Bugs Destroyed</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 backdrop-blur-sm">
+            <div class="text-2xl sm:text-3xl font-black text-pink-400">Full</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Stack Command</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Hacker Terminal -->
+      <section id="terminal" class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+        <div class="rounded-2xl border border-slate-800 bg-[#080d1a] shadow-2xl shadow-cyan-950/40 overflow-hidden">
+          <!-- Terminal Title Bar -->
+          <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between select-none">
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+              <span class="text-xs font-semibold text-slate-400 ml-2">sunny@terminal:~ (Try typing: help, whoami, skills, hack)</span>
+            </div>
+            <span class="text-[11px] text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-800">BASH 5.2</span>
+          </div>
+
+          <!-- Terminal Output Area -->
+          <div id="terminalLog" class="p-5 h-64 overflow-y-auto space-y-2 text-xs sm:text-sm font-mono leading-relaxed">
+            <div class="text-emerald-400 font-bold">[SYSTEM INITIALIZED] Welcome to Sunny's Interactive Console.</div>
+            <div class="text-slate-400">Type <span class="text-cyan-300 font-bold">'help'</span> or <span class="text-cyan-300 font-bold">'whoami'</span> to know more about the legend.</div>
+          </div>
+
+          <!-- Terminal Input Line -->
+          <div class="p-3 bg-slate-950/70 border-t border-slate-800/80 flex items-center gap-2">
+            <span class="text-emerald-400 font-bold pl-2 text-sm">sunny@root:~#</span>
+            <input 
+              type="text" 
+              id="terminalInput" 
+              autocomplete="off"
+              placeholder="Command type karo..." 
+              class="w-full bg-transparent text-cyan-300 focus:outline-none text-xs sm:text-sm font-mono"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech Arsenal & Superpowers -->
+      <section id="arsenal" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center mb-12">
+          <p class="text-xs uppercase tracking-widest text-cyan-400 font-semibold mb-1">// SYSTEM CAPABILITIES</p>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Sunny's Lethal Arsenal</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-cyan-500/50 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+              ⚡
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Ultra-Speed Web Dev</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              React, Tailwind, Node.js, Next.js — aisi websites jo aankh jhapakne se pehle load ho jayein. Zero junk, pure optimization.
+            </p>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-cyan-400 h-full w-[96%]"></div>
+            </div>
+            <span class="text-[10px] text-cyan-400 mt-1 block">Efficiency: 96%</span>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/50 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+              🛡️
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">Cyber Sec & Bug Hunting</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Vulnerability analysis, secure API design, aur pen-testing mindsets. Code mein chhidra khoj ke khatam karna hi specialty hai.
+            </p>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-emerald-400 h-full w-[92%]"></div>
+            </div>
+            <span class="text-[10px] text-emerald-400 mt-1 block">Security Mastery: 92%</span>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-indigo-500/50 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-indigo-950/60 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+              🎨
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">Futuristic UI / UX</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">
+              Boriyat se door, modern animation, sleek typography aur dark themed interfaces jo user ko screen se chipka ke rakhe.
+            </p>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-indigo-400 h-full w-[98%]"></div>
+            </div>
+            <span class="text-[10px] text-indigo-400 mt-1 block">Design Impact: 98%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects / Missions Done -->
+      <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <p class="text-xs uppercase tracking-widest text-cyan-400 font-semibold mb-1">// DEPLOYED SOLUTIONS</p>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Classified Missions</h2>
+          </div>
+          <span class="text-xs text-slate-500 hidden sm:inline-block">Status: Verified & Live</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl bg-gradient-to-b from-slate-900 to-[#070b14] border border-slate-800 relative overflow-hidden">
+            <div class="text-xs text-cyan-400 font-bold mb-2">PROJECT 01: CIPHER GUARD</div>
+            <h4 class="text-lg font-bold text-white">Full-Stack Encrypted Communication Vault</h4>
+            <p class="text-xs text-slate-400 mt-2">End-to-end data encryption system aur low-latency WebSocket messaging platform.</p>
+            <div class="mt-4 flex gap-2">
+              <span class="text-[11px] px-2.5 py-1 rounded bg-slate-800 text-slate-300">NodeJS</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-slate-800 text-slate-300">WebCrypto</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-slate-800 text-slate-300">Tailwind</span>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-gradient-to-b from-slate-900 to-[#070b14] border border-slate-800 relative overflow-hidden">
+            <div class="text-xs text-emerald-400 font-bold mb-2">PROJECT 02: NEURAL PULSE</div>
+            <h4 class="text-lg font-bold text-white">High-Performance Real-Time Monitoring Portal</h4>
+            <p class="text-xs text-slate-400 mt-2">Million-event stream handling dashboard jo sub-millisecond me visualize karta hai.</p>
+            <div class="mt-4 flex gap-2">
+              <span class="text-[11px] px-2.5 py-1 rounded bg-slate-800 text-slate-300">React</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-slate-800 text-slate-300">D3.js</span>
+              <span class="text-[11px] px-2.5 py-1 rounded bg-slate-800 text-slate-300">Next.js</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Terminal -->
+      <section id="contact" class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8 backdrop-blur-sm text-center">
+          <span class="text-3xl">📡</span>
+          <h3 class="text-2xl font-bold text-white mt-3">Ready to Build Something Insane?</h3>
+          <p class="text-xs sm:text-sm text-slate-400 mt-2 max-w-md mx-auto">
+            Chahe naya project shuru karna ho ya system secure karna ho, Sunny is just one ping away.
+          </p>
+
+          <form id="hackerContact" class="mt-6 space-y-4 text-left">
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-slate-400 mb-1">Aapka Codename / Naam</label>
+              <input type="text" required placeholder="Agent X" class="w-full px-4 py-2.5 text-xs rounded-xl bg-slate-950 border border-slate-700 text-cyan-300 focus:outline-none focus:border-cyan-400" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-slate-400 mb-1">Frequency (Email / Telegram)</label>
+              <input type="text" required placeholder="agent@mission.io" class="w-full px-4 py-2.5 text-xs rounded-xl bg-slate-950 border border-slate-700 text-cyan-300 focus:outline-none focus:border-cyan-400" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-slate-400 mb-1">Mission Details</label>
+              <textarea rows="3" required placeholder="Project ka brief yahan dalein..." class="w-full px-4 py-2.5 text-xs rounded-xl bg-slate-950 border border-slate-700 text-cyan-300 focus:outline-none focus:border-cyan-400"></textarea>
+            </div>
+            <button type="submit" class="w-full py-3 text-xs font-black uppercase tracking-widest rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black shadow-lg shadow-cyan-400/20 active:scale-95 transition-all">
+              Transmit Data to Sunny 🚀
+            </button>
+          </form>
+
+          <div id="contactToast" class="hidden mt-4 p-3 rounded-lg border border-cyan-500/50 bg-cyan-950/60 text-cyan-300 text-xs font-mono">
+            [TRANSMISSION RECEIVED] Sunny ko sandesh mil gaya hai. Jaldi hi contact karega!
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+      <p>© 2026 SUNNY ENTERPRISES. All Rights Reserved. Built with pure code & swagger.</p>
+    </footer>
+
+  </div>
+
+  <!-- Terminal Logic & Matrix Canvas Animation -->
+  <script>
+    // 1. Matrix Background Animation
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const characters = '01SUNNYCYBERTECH<>{}[]*+=#%_';
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = [];
+
+    function resetDrops() {
+      columns = Math.floor(canvas.width / fontSize);
+      drops = [];
+      for (let i = 0; i < columns; i++) {
+        drops[i] = Math.random() * -100;
+      }
+    }
+    resetDrops();
+    window.addEventListener('resize', resetDrops);
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(5, 8, 17, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#06b6d4';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = characters.charAt(Math.floor(Math.random() * characters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    setInterval(drawMatrix, 45);
+
+    // 2. Interactive Terminal Commands
+    const terminalInput = document.getElementById('terminalInput');
+    const terminalLog = document.getElementById('terminalLog');
+
+    const commands = {
+      help: `Uplabdh Commands: <br/>
+             - <span class="text-cyan-300 font-bold">whoami</span>: Sunny ke baare me sab jaan lo<br/>
+             - <span class="text-cyan-300 font-bold">skills</span>: Technical powers list<br/>
+             - <span class="text-cyan-300 font-bold">hack</span>: Simulation protocol run karein<br/>
+             - <span class="text-cyan-300 font-bold">clear</span>: Screen saaf karein<br/>
+             - <span class="text-cyan-300 font-bold">praise</span>: Sunny ki asli taaref suno`,
+      whoami: `<span class="text-cyan-400">Sunny</span>: Full-Stack Maestro, Terminal Master, and Cyber Sleuth. Known for writing code that never breaks and designs that dominate.`,
+      skills: `<span class="text-emerald-400">[SKILLS DETECTED]:</span> HTML5, Tailwind CSS, Modern React, JavaScript ESNext, System Architecture, Web Penetration Testing, Performance Tuning.`,
+      praise: `<span class="text-amber-300 font-bold">🔥 "Sunny ka code aisa hai ki bugs bhi haath jod ke maafi maangte hain!"</span>`,
+      hack: `<span class="text-rose-400 animate-pulse font-bold">[BREACH SIMULATION] Bypassing mainframe... Firewalls deactivated... Server controlled by Sunny. 😎</span>`
+    };
+
+    terminalInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const val = this.value.trim().toLowerCase();
+        if (!val) return;
+
+        // User command log
+        const userLine = document.createElement('div');
+        userLine.className = 'text-slate-300';
+        userLine.innerHTML = `<span class="text-emerald-400 font-bold">sunny@root:~#</span> ${escapeHtml(this.value)}`;
+        terminalLog.appendChild(userLine);
+
+        // Process command
+        const responseLine = document.createElement('div');
+        if (val === 'clear') {
+          terminalLog.innerHTML = '';
+        } else if (commands[val]) {
+          responseLine.innerHTML = commands[val];
+          terminalLog.appendChild(responseLine);
+        } else {
+          responseLine.className = 'text-rose-400';
+          responseLine.innerHTML = `Command '${escapeHtml(val)}' nahi mila. Type <span class="text-cyan-300 underline font-bold">help</span> to view available commands.`;
+          terminalLog.appendChild(responseLine);
+        }
+
+        this.value = '';
+        terminalLog.scrollTop = terminalLog.scrollHeight;
+      }
+    });
+
+    function escapeHtml(text) {
+      const p = document.createElement('p');
+      p.textContent = text;
+      return p.innerHTML;
+    }
+
+    // 3. Contact Form Submission
+    const contactForm = document.getElementById('hackerContact');
+    const toast = document.getElementById('contactToast');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      toast.classList.remove('hidden');
+      contactForm.reset();
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
